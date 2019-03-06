@@ -1,11 +1,15 @@
 """
 This is just code off the internet intended to be modified and used to learn
-how this project can be done.
+how this project can be done. This plots the frequency of a .wav file. Its plot
+will be then anylyzed by some other implementation.
 """
 
 from pylab import *
 from scipy.io import wavfile
 
+############################################
+# You can change which file to anylyze here
+############################################
 sampFreq, snd = wavfile.read('440_sine.wav')
 
 snd = snd / (2.**15)
