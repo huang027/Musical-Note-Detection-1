@@ -1,6 +1,6 @@
 """
-This code doesnt work because of library issues but it is supposed to
-get frequencyself.
+This code DOES NOT WORK because of library issues but it is supposed to
+get frequency. It was merely used to aid with other implementations.
 """
 
 # Read in a WAV and find the freq's
