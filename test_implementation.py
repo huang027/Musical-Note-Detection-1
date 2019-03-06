@@ -1,10 +1,10 @@
 """
 FIRST REAL IMPLEMENTATION THAT WASNT JUST COPY PASTED FROM OTHE INTERNET
-This is my implementation of what I gathered from other code. This should
-give me the frequency of a sound. For the c note tested it registers near a C5.
+This is the implementation of what was gathered from other code. This should
+give the frequency of a sound. For the c note tested it registers near a C5.
 The percent error of this test is less than 1% if this is not a mere
 coincidence.
-UPDATE: THIS ALSO WORKS WITH AN A NOTE!!
+UPDATE 3/6/18 2:03PM: THIS ALSO WORKS WITH AN A NOTE!!
 """
 import wave
 import numpy as np
