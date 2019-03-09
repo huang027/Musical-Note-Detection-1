@@ -11,7 +11,7 @@ UPDATE 3/6/18 2:03PM: THIS ALSO WORKS WITH AN A NOTE!!
 We need to get this to work with more than just a single note at a time!
 
 UPDATE 3/8/18 6:00PM: Other notes implemented. Can now return a note value.
-Still needs adjustments, F would not work.
+Still needs adjustments, F, F# and G would not work.
 """
 
 import wave
@@ -77,23 +77,6 @@ def get_frequency(file):
         thefreq = max*rate/chunk
         # print("IN ELSE")
         return thefreq
-"""
-This hard coded function will manually check if sound frequencies
-are close to to real note frequencies. THIS WILL BE IMPOROVED!!
-"""
-
-def check_notes(frequency):
-    if 430 < frequency < 450:
-        return "A4"
-    elif 480 < frequency < 500:
-        return "B4"
-    elif 515 < frequency < 530:
-        return "C5"
-    elif 580 < frequency < 600:
-        return "D5"
-    else:
-        return "Nothing found"
-
 
 """
 This function uses the hash table to get the frequencies. This makes more sense
@@ -107,7 +90,7 @@ def get_note(frequency):
         # gets the absolute value so no negatives
         percent_error = abs(percent_error)
         # checks if percent error is less than 1
-        if percent_error < 1:
+        if percent_error < 1.3:
             calc_note = NOTES[key]
             return calc_note
     return "COULD NOT GET A VALID NOTE"
@@ -115,7 +98,8 @@ def get_note(frequency):
 ##################################
 # Main Part of Program
 ##################################
-f = 'piano_d.wav'
+f = 'piano_a.wav'
 freq = get_frequency(f)
 note = get_note(freq)
+print(freq)
 print(note)
