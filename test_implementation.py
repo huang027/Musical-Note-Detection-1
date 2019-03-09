@@ -13,8 +13,30 @@ We need to get this to work with more than just a single note at a time!
 UPDATE 3/8/18 6:00PM: Other notes implemented. Can now return a note value.
 Still needs adjustments, F would not work.
 """
+
 import wave
 import numpy as np
+
+"""
+A hash table to store each note.
+Each note is the value and the frequency
+is the key.
+Notes and frequencies came from:
+http://pages.mtu.edu/~suits/notefreqs.html
+UNFINISHED!
+"""
+NOTES = {
+    '261.63': 'C4', '277.18': 'C#4/Db4',
+    '293.66': 'D4', '311.13': 'D#4/Eb4',
+    '329.63': 'E4', '349.23': 'F4',
+    '369.99': 'F#4/Gb4', '392.00': 'G4',
+    '415.30': 'G#4/Ab4', '440.00': 'A4',
+    '466.16': 'A#4/Bb4', '493.88': 'B4',
+    '523.25': 'C5', '554.37': 'C#5/Db5',
+    '587.33': 'D5', '622.25': 'D#5//Eb5',
+    '659.25': 'E5', '698.46': 'F5'
+}
+
 
 DEBUGGING = False
 def get_frequency(file):
@@ -59,6 +81,7 @@ def get_frequency(file):
 This hard coded function will manually check if sound frequencies
 are close to to real note frequencies. THIS WILL BE IMPOROVED!!
 """
+
 def check_notes(frequency):
     if 430 < frequency < 450:
         return "A4"
@@ -70,10 +93,29 @@ def check_notes(frequency):
         return "D5"
     else:
         return "Nothing found"
+
+
+"""
+This function uses the hash table to get the frequencies. This makes more sense
+as opposed to manually checking everything.
+"""
+def get_note(frequency):
+    # loops through the hash table
+    for key in NOTES:
+        # calculates the percent error
+        percent_error = ((frequency - float(key)) / float(key)) * 100
+        # gets the absolute value so no negatives
+        percent_error = abs(percent_error)
+        # checks if percent error is less than 1
+        if percent_error < 1:
+            calc_note = NOTES[key]
+            return calc_note
+    return "COULD NOT GET A VALID NOTE"
+
 ##################################
 # Main Part of Program
 ##################################
-f = 'piano_c.wav'
+f = 'piano_d.wav'
 freq = get_frequency(f)
-note = check_notes(freq)
+note = get_note(freq)
 print(note)
